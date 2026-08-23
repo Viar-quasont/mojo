@@ -128,7 +128,10 @@ const jokes = [
 ];
 
 export default function Jokes() {
-  const [jokeIndex, setJokeIndex] = useState(0);
+  const [jokeIndex, setJokeIndex] = useState(
+  () => Math.floor(Math.random() * jokes.length)
+);
+
   const [revealed, setRevealed] = useState(false);
 
   const [question, answer] = jokes[jokeIndex];
