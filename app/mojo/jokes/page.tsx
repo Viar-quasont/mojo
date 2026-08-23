@@ -136,10 +136,20 @@ export default function Jokes() {
 
   const [question, answer] = jokes[jokeIndex];
 
-  const nextJoke = () => {
-    setJokeIndex((current) => (current + 1) % jokes.length);
-    setRevealed(false);
-  };
+const nextJoke = () => {
+  setJokeIndex((current) => {
+    let next;
+
+    do {
+      next = Math.floor(Math.random() * jokes.length);
+    } while (next === current);
+
+    return next;
+  });
+
+  setRevealed(false);
+};
+
 
   return (
     <main
